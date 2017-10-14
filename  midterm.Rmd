@@ -7,7 +7,7 @@ output:
 --
 title: "Statistical Foundations for Data Science - Midterm "
 author: "Travis Deason"
-date: "Oct 8th 2017"
+date: "Oct 14th 2017"
 output:  word_document
 ---
 
@@ -19,7 +19,7 @@ rm( list = ls()); cat("\014")  # Clear environment
 ## Meloma study: Higher counts indicate more / worse disease.  There have been several drugs that have been developed to fight this type of cancer, the effects of which are measured in the reduction of the Lambda and Kappa protein levels. Four of these drugs are as follows: Revlimid, Velcade, Dex, and Pomolyst.
 * a researcher randomly selected the records of 35 patients who had been taking one of the drugs above. To be clear, there were 140 patients’ records in the study, 35 patients that took Revlimid, 35 that took Velcade, 35 that took Dex, and 35 that took Pomolyst. The researcher recorded the percentage drop in Lambda protein during the standard 15-month treatment of taking the drug.
 
-```{r echo=True, message=FALSE}
+```{r echo=TRUE, message=FALSE}
 meloma <- read.csv('data/myeloma.csv')
 names(meloma) <- sapply(names(meloma), tolower)
 boxplot(lambdadrop~drug, data=meloma, main='Lambda drop')
@@ -37,7 +37,7 @@ velc <- subset(meloma, drug == 'Velcade')
  
  >* To test this assumption we will use Anova.  With the Lambda protien drop data, we can use Anova becuase, while the data is not normally distributed, there is a large enough sample size (35 in each group), the group sizes are all equal, and the group variances are similar.  Since the testing was done on the same patients in a before/after case, we cannot assume independence, but this violation of indepndence is acceptable for our testing
  
-```{r echo=True, message=FALSE}
+```{r echo=TRUE, message=FALSE}
 lambda_aov <- aov(lambdadrop~drug, data= meloma)
 summary(lambda_aov)
 ```
